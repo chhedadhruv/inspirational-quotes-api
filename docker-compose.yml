@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  quote-api:
+    build: ./quote-api
+    container_name: quote-api
+    restart: unless-stopped
+    expose:
+      - "3000"
+    networks:
+      - backend
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel run your-tunnel-id
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml:ro
+      - ./cloudflared/quote-api-tunnel.json:/etc/cloudflared/quote-api-tunnel.json:ro
+    networks:
+      - backend
+
+networks:
+  backend:

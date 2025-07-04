@@ -1,0 +1,40 @@
+{
+  "name": "quote-api",
+  "version": "1.0.0",
+  "description": "A simple Node.js API serving 2000+ inspirational quotes, built with Express and deployed with NGINX. Accessible via quotes.dhruvchheda.com.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quotes",
+    "quote-api",
+    "inspirational-quotes",
+    "motivational-quotes",
+    "express-api",
+    "nodejs-api",
+    "nodejs",
+    "express",
+    "rest-api",
+    "json-api",
+    "api-server",
+    "nginx",
+    "self-hosted",
+    "home-server",
+    "tailscale",
+    "dhruvchheda"
+  ],
+  "author": "Dhruv Chheda",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.0.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
