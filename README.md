@@ -18,6 +18,7 @@
 
 ## ✨ Features
 
+<div align="center">
 <table>
 <tr>
 <td>
@@ -65,6 +66,7 @@
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
@@ -147,6 +149,7 @@ http://localhost:3000/api
 
 ### 📋 Endpoints Overview
 
+<div align="center">
 <table>
 <tr>
 <th>Category</th>
@@ -209,6 +212,7 @@ http://localhost:3000/api
 <td><a href="#-health-check">View</a></td>
 </tr>
 </table>
+</div>
 
 ---
 
@@ -405,6 +409,7 @@ METRICS_ENABLED=false       # Enable metrics collection
 
 ### 🔒 Security Features
 
+<div align="center">
 <table>
 <tr>
 <td>
@@ -429,9 +434,11 @@ METRICS_ENABLED=false       # Enable metrics collection
 </td>
 </tr>
 </table>
+</div>
 
 ### 🛠️ Development Features
 
+<div align="center">
 <table>
 <tr>
 <td>
@@ -456,6 +463,7 @@ METRICS_ENABLED=false       # Enable metrics collection
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
@@ -470,6 +478,61 @@ METRICS_ENABLED=false       # Enable metrics collection
 
 ```bash
 docker-compose up -d
+```
+
+</details>
+
+## 🏡 Home Server Deployment (Self-Hosting)
+
+<details>
+<summary><strong>⚙️ Deploy from Your Home PC using Docker + Cloudflare Tunnel</strong></summary>
+
+### 🔧 Requirements
+
+- Ubuntu/Linux-based home server
+- Docker + Docker Compose
+- Cloudflared installed and authenticated
+- Cloudflare DNS set up with your domain (e.g., quotes.dhruvchheda.com)
+
+### 📁 Folder Structure
+
+```bash
+quote-stack/
+├── quote-api/                   # Express API source
+├── cloudflared/
+│   ├── config.yml               # Tunnel configuration
+│   └── quote-api-tunnel.json    # Tunnel credentials
+└── docker-compose.yml          # Service orchestration
+```
+
+### 📝 cloudflared/config.yml
+
+```yaml
+tunnel: <your-tunnel-id>
+credentials-file: /etc/cloudflared/quote-api-tunnel.json
+
+ingress:
+  - hostname: <your-domain>
+    service: http://quote-api:3000
+  - service: http_status:404
+```
+
+### 🚀 Deploy
+
+```bash
+docker-compose up -d
+```
+
+✅ **Your API will be available publicly at:**
+https://<your-domain>
+
+### 🔄 Auto-Start on Reboot (Optional)
+
+Enable automatic startup of Docker and cloudflared on server reboot:
+
+```bash
+sudo systemctl enable docker
+sudo systemctl enable cloudflared
 ```
 
 </details>
@@ -565,6 +628,7 @@ curl -X GET http://localhost:3000/health
 
 ## 🚀 Performance & Monitoring
 
+<div align="center">
 <table>
 <tr>
 <td>
@@ -588,6 +652,7 @@ curl -X GET http://localhost:3000/health
 </td>
 </tr>
 </table>
+</div>
 
 ### 📈 Monitoring Commands
 
